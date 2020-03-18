@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="">
-<head>
+<head> 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161230010-1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        gtag('config', 'UA-');
+    gtag('config', 'UA-161230010-1');
     </script>
-
+    
     <link href="https://fonts.googleapis.com/css?family=Raleway:400&amp;subset=latin-ext" rel="preload" as="font" />
     <title>
         Coronavirus (COVID-19) global stats over time. JSON data. | corona.virusmap.cz
@@ -37,7 +37,6 @@
     <meta property="og:image:height" content="237" />
     <meta property="og:description" content="">
     <meta name="description" content="Graphs, stats, raw data for 2019-2020 COVID-19 disease. BETA">
-
 </head>
 
 <body id="_ndefault">
@@ -61,28 +60,109 @@
             <div>
                 <h1>Coronavirus (COVID-19) global stats over time. JSON data.</h1>
                 <h2>h2</h2>
-                <p></p>
+                <p><select id="country-dropdown" name="country">
+                    </select></p>
             </div>
         </div>
         <div class="_dn">
             <div>
-                <h2>h2</h2>
-                <p></p>
+                    <canvas id="canvas"></canvas>
             </div>
         </div>
-        <div class="_dn h1div">
-            <div>
-                <h2>h2</h2>
-                <p></p>
-            </div>
-        </div>
+
     </main>
     <footer>
         <div>© 2020<br /></div>
         <div class="_xdata"></div>
     </footer>
+	<script src="	https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		function data2graph(srcData) { // regroups data for use in graphs; move to front-end
+			var gdata = []
+			gdata = []
+			gdata.push({})
+			gdata.push({})
+			gdata.push({})
+			gdata[0].label = "Cases"
+			gdata[1].label = "Deceased"
+			gdata[2].label = "Recovered"
+			let cases = gdata[0].data = []
+			let deceased = gdata[1].data = []
+			let recovered = gdata[2].data = []
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="/j/l.js"></script>
+			for (let dataChunk of Object.keys(srcData)) {
+				let c = {}
+				let d = {}
+				let r = {}
+				c.x = new Date(dataChunk)
+				d.x = c.x
+				r.x = c.x
+				c.y = srcData[dataChunk].cases
+				d.y = srcData[dataChunk].deceased
+				r.y = srcData[dataChunk].recovered
+				cases.push(c)
+				deceased.push(d)
+				recovered.push(r)
+			}
+			return gdata
+		}
+		var srcData = {"area":9147593,"pop":329064917,"data":{"Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)":{"when":1584379616861,"cases":3836,"deceased":70,"recovered":73},"Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)":{"when":1584390062443,"cases":4314,"deceased":75,"recovered":73},"Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)":{"when":1584396188113,"cases":4547,"deceased":85,"recovered":74},"Tue Mar 17 2020 07:04:04 GMT+0100 (GMT+01:00)":{"when":1584425044991,"cases":4727,"deceased":93,"recovered":74},"Tue Mar 17 2020 08:16:06 GMT+0100 (GMT+01:00)":{"when":1584429366923,"cases":4727,"deceased":93,"recovered":74},"Tue Mar 17 2020 08:26:26 GMT+0100 (GMT+01:00)":{"when":1584429987241,"cases":4727,"deceased":93,"recovered":74},"Tue Mar 17 2020 08:59:01 GMT+0100 (GMT+01:00)":{"when":1584431958442,"cases":4733,"deceased":93,"recovered":74},"Tue Mar 17 2020 12:46:36 GMT+0100 (GMT+01:00)":{"when":1584445606034,"cases":4743,"deceased":93,"recovered":74},"Tue Mar 17 2020 13:58:14 GMT+0100 (GMT+01:00)":{"when":1584449903305,"cases":4744,"deceased":93,"recovered":74},"Tue Mar 17 2020 15:14:11 GMT+0100 (GMT+01:00)":{"when":1584454460888,"cases":4748,"deceased":93,"recovered":74},"Tue Mar 17 2020 17:56:48 GMT+0100 (GMT+01:00)":{"when":1584464218126,"cases":5696,"deceased":97,"recovered":74},"Tue Mar 17 2020 20:47:44 GMT+0100 (GMT+01:00)":{"when":1584474473776,"cases":5915,"deceased":99,"recovered":74},"Tue Mar 17 2020 22:29:19 GMT+0100 (GMT+01:00)":{"when":1584480569150,"cases":6159,"deceased":102,"recovered":74},"Wed Mar 18 2020 06:29:08 GMT+0100 (GMT+01:00)":{"when":1584509358794,"cases":6515,"deceased":115,"recovered":106},"Wed Mar 18 2020 11:10:56 GMT+0100 (GMT+01:00)":{"when":1584526256736,"cases":6524,"deceased":116,"recovered":106},"Wed Mar 18 2020 13:44:19 GMT+0100 (GMT+01:00)":{"when":1584535459649,"cases":6524,"deceased":116,"recovered":106},"Wed Mar 18 2020 15:50:14 GMT+0100 (GMT+01:00)":{"when":1584543014477,"cases":7339,"deceased":116,"recovered":106}}}
+		var timeFormat = 'DD/MM/YYYY';
+		var config = {
+			type: 'line',
+			data: {
+				datasets: [{
+					label: "Cases",
+					data: [{x: new Date("Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)"),y: 3836 }, {x: new Date("Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)"),y: 4314}, {x: new Date("Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)"), y: 4547}]},{label: "Cases",data: [{x: new Date("Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)"),y: 10}, {x: new Date("Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)"),y: 20 }, {x: new Date("Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)"),y: 15}]}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					//display: true,
+					text: "COVID-19"
+				},
+				scales: {
+					xAxes: [{
+						type: "time",
+						time: {
+							format: timeFormat,
+							tooltipFormat: 'll'
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'value'
+						}
+					}]
+				}
+			}
+		};
+        var dropdown = $('#country-dropdown');
+        dropdown.empty();
+        dropdown.append('<option selected="true" disabled>Choose country</option>');
+        dropdown.prop('selectedIndex', 0);
+		window.onload = function () {
+
+            $.getJSON("https://corona.virusmap.cz/x/_countrylist.json", function(countrylist) {
+            $.each(countrylist, function (key, entry) {
+                console.log(key, entry)
+                dropdown.append($('<option></option>').attr('value', entry).text(key));
+            })
+            });
+
+			$.getJSON("https://corona.virusmap.cz/x/united_states.json", function(srcData) {
+				var datasets = data2graph(srcData.data)
+			config.data.datasets = datasets
+			var ctx = document.getElementById("canvas").getContext("2d");
+			window.myLine = new Chart(ctx, config);
+			});
+		};
+	</script>
 </body>
 </html>

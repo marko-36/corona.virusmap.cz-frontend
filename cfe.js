@@ -72,12 +72,13 @@ const httpServer = http.createServer(function(req,res){
   var buffer = ''
 
   req.on('data', function(data) {
+    console.log ("req.on()")
     buffer += decoder.write(data)
   })
 
   req.on('end', async function() {
     buffer += decoder.end()
-    var pageData
+    console.log ("decoder.end()")
     
     if (reqData.basename.length > 0 && reqData.basenameext.length > 0) {            //static resources (non-html) handled by NGINX
         handlers.staticResources(reqData, response, responseStream)
@@ -99,5 +100,6 @@ const httpServer = http.createServer(function(req,res){
   
 httpServer.listen(config_private.localPort, function (err){
   if (err) {process.exit()}
+  console.log ("server running")
 })
 

@@ -1,0 +1,28 @@
+{
+  "name": "corona.virusmap.cz-frontend",
+  "version": "1.0.0",
+  "description": "Front-end for corona.virusmap.cz",
+  "main": "cfe.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marko-36/corona.virusmap.cz-frontend.git"
+  },
+  "keywords": [
+    "\"covid\"",
+    "\"covid-19\"",
+    "\"coronavirus\"",
+    "\"stats\"",
+    "\"statistics\"",
+    "\"map\"",
+    "\"per-capita\""
+  ],
+  "author": "marko-36",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/marko-36/corona.virusmap.cz-frontend/issues"
+  },
+  "homepage": "https://github.com/marko-36/corona.virusmap.cz-frontend#readme"
+}
