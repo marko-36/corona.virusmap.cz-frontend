@@ -13,14 +13,7 @@
     gtag('config', 'UA-161230010-1');
     </script>
     
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400&amp;subset=latin-ext" rel="preload" as="font" />
-    <title>
-        Coronavirus (COVID-19) global stats over time. JSON data. | corona.virusmap.cz
-    </title>
-    <link href="/c/2a.css" rel="stylesheet" media="(min-width:1058px)" />
-    <link href="/c/2b.css" rel="preload" as="style" media="(min-width:1058px)" />
-    <link href="/c/2c.css" rel="preload" as="style" media="(min-width:1058px)" />
-    <link href="/c/d.css" rel="preload" as="style" />
+	<title>Coronavirus (COVID-19) global stats over time. JSON data. | corona.virusmap.cz</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -36,133 +29,293 @@
     <meta property="og:image:width" content="237" />
     <meta property="og:image:height" content="237" />
     <meta property="og:description" content="">
-    <meta name="description" content="Graphs, stats, raw data for 2019-2020 COVID-19 disease. BETA">
+	<meta name="description" content="Graphs, stats, raw data for 2019-2020 COVID-19 disease. BETA">
+
+	<link href="https://fonts.googleapis.com/css2?family=Oswald&family=Raleway:wght@500&display=swap" rel="stylesheet">
+	<style>
+		/*-- http://meyerweb.com/eric/tools/css/reset/    v2.0 | 20110126   License: none (public domain)--*/
+		a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;/*font:inherit;*/vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+		*{position:relative;box-sizing:border-box;background-repeat:no-repeat;outline:none}*:focus{outline:none}
+		body{z-index:2;font-family:'Raleway',sans-serif;color:#555;line-height:1.625rem;font-size:1.125rem;background-color:#fff}
+		header{display:block;position:fixed;z-index:70;top:0;height:2.5rem;width:100%;background-color:#ddd}
+		nav{display:block;position:fixed;z-index:70;top:2.5rem !important;width:100%;font-size:1.25rem;background:#000}
+		._dn>*,._dt>*,header>*,footer>*,#nav_user,#nav_main{position:relative;margin:0 auto 0 -32.5rem;width:65rem;left:50%;padding:0 .5rem 2rem;}
+		main{display:block;position:relative;padding-top:8rem}
+		main>div:nth-child(2n+1){background-color:#eee}
+		
+		h1,.h1,h2,.h2,h3,.h3,h4,.h4,header,nav,select,a[id^="lbtn_"],.lbtn{font-weight:normal;color: #000;font-size:1rem;font-family:'Raleway',sans-serif}
+		h1,.h1,h2,.h2,h3,.h3,h4,.h4,nav{font-family: 'Oswald', sans-serif;}	
+		h1,.h1{padding: 1.25rem 0 0 5rem;font-size: 2rem}
+		h2,.h2{padding:2rem 0 .25rem;font-size:2rem;width:auto !important}
+		h3,.h3,h4,cite{padding:2rem 0 0;font-size:1.75rem}
+		h4,.h4{font-size:1.375rem;color:#666;padding:1rem 0 0}
+		
+		nav{display:block;position:fixed;z-index:70;top:2.5rem !important;width:100%;font-size:1.25rem;background:#326}
+		nav a,nav b{display:block;color:#fff;font-weight:normal;text-decoration:none}
+
+		#nav_user li{display:inline-block;position:relative;white-space:nowrap;height:100%;vertical-align:top;text-align:right}
+		#nav_user li:nth-of-type(1){float:left;width:4.5rem;vertical-align:bottom;bottom:0;position:relative;height:4.5rem}/*width nastavit podle šířky loga*/
+		#nav_user a{filter: invert(100%); background-image: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 210.7 210.7%22%3E%3Cpath d%3D%22M189 83c-10 0-18 6-21 15h-9c-1-10-5-18-10-25l6-6a22 22 0 0031-21 22 22 0 00-22-22c-6 0-11 3-15 7-7 7-9 17-5 25l-6 6c-7-5-16-9-25-10v-9a22 22 0 10-15 0v9c-10 1-18 5-25 10l-7-6a22 22 0 10-10 11l6 6c-5 7-9 15-10 25h-9a22 22 0 10-21 29c10 0 18-6 21-14h9c1 9 5 18 10 25l-6 6a22 22 0 00-32 20 22 22 0 0022 22c6 0 12-2 16-6 7-7 8-17 4-25l7-6c7 5 15 9 25 10v9a22 22 0 007 43 22 22 0 0022-22c0-10-6-18-14-21v-9c9-1 18-5 25-10l6 6a22 22 0 1011-11l-6-6c5-7 9-16 10-25h9c3 8 11 14 21 14a22 22 0 000-44zm-56 50c-7 7-17 12-27 12h-1c-22-1-39-18-39-39v-1c0-21 18-39 39-39h1c10 0 20 4 27 11v1c7 7 11 16 12 27v1c-1 10-5 20-12 27zm26-92a7 7 0 0110 0 7 7 0 010 11 7 7 0 01-10 0c-3-3-3-8 0-11zm-54-26a7 7 0 110 14 7 7 0 010-14zM41 52a7 7 0 1111-11 7 7 0 01-11 11zm-19 60a7 7 0 110-14 7 7 0 010 14zm30 57a7 7 0 01-11 0 7 7 0 010-10 7 7 0 0111 0c2 3 2 7 0 10zm58 25l-5 2v7-7a7 7 0 115-2zm59-35a7 7 0 010 10 7 7 0 01-10 0 7 7 0 0110-10zm20-47v8-8a7 7 0 110-14 7 7 0 010 14z%22%2F%3E%3Ccircle cx%3D%22105.3%22 cy%3D%2293%22 r%3D%228%22%2F%3E%3Ccircle cx%3D%2293.4%22 cy%3D%22113.6%22 r%3D%228%22%2F%3E%3Ccircle cx%3D%22117.2%22 cy%3D%22113.6%22 r%3D%228%22%2F%3E%3C%2Fsvg%3E');}	
+		#nav_user a{height: 100%;background-size: 3rem;position: relative;background-position: 50%;}
+		#nav_main{padding:0;height:2.5rem;font-size:1.5rem;text-align:right; visibility:hidden}	
+
+		footer{padding:1rem;font-size:1rem;background-color:#000;color: #ccc}
+	</style>
 </head>
 
-<body id="_ndefault">
-    <a id="_top"></a>
-    <div id='_modaloverlay'></div>
-
-    <header>
-        <div style="display:none">
-            <div class="search"><input type="text" value="Search" id="TB_search" /></div>
-        </div>
-    </header>
+<body>
+	<header></header>
     <nav>
         <ul id="nav_user">
-            <li><a href="https://corona.virusmap.cz/">https://corona.virusmap.cz/</a></li>
+            <li><a href="https://corona.virusmap.cz/"><h1>Coronavirus (COVID-19) global stats over time</h1></a></li>
         </ul>
-        <ul id="nav_main"></ul>
+        <!--ul id="nav_main">
+			<li><a href=""><b>Global map</b></a></li><li><a href=""><b>Country stats</b></a></li>
+		</ul-->
     </nav>
-    <main>
-
-        <div class="_dn xdbg-s">
-            <div>
-                <h1>Coronavirus (COVID-19) global stats over time. JSON data.</h1>
-                <h2>h2</h2>
-                <p><select id="country-dropdown" name="country">
-                    </select></p>
-            </div>
-        </div>
-        <div class="_dn">
-            <div>
-                    <canvas id="canvas"></canvas>
-            </div>
-        </div>
-
-    </main>
+	<main>
+		<div id="stats_global">
+			<div class="_dn">
+				<div>
+					<h2>Global map</h2>
+				</div>
+			</div>
+			<div class="_dn">
+				<div>
+				</div>
+			</div>
+		</div>
+		<div id="stats_country">
+			<div class="_dn">
+				<div>
+					<h2>Country stats</h2>
+					<p><br><select id="countryDropdown" name="country">
+							<option value="wait">Please wait ...</option>
+					</select>
+						<select id="dataDropdown" name="data">
+							<option value="abs">Absolute values</option>
+							<option value="cap">To Population</option>
+						</select></p>
+				</div>
+			</div>
+			<div class="_dn">
+				<div id="graph">
+					<canvas id="canvas"></canvas>
+				</div>
+			</div>
+		</div>
+	</main>
     <footer>
-        <div>© 2020<br /></div>
-        <div class="_xdata"></div>
+		<div>© 2020<br /></div>
+		<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
-	<script src="	https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
-		function data2graph(srcData) { // regroups data for use in graphs; move to front-end
+		function extendData(srcData) {  // add to-area and to-population 
+			for (let dataPoint of Object.keys(srcData.data)) {
+				dataChunk = srcData.data[dataPoint]
+				dataChunk.p_cases = srcData.pop / dataChunk.cases
+				dataChunk.p_dec = srcData.pop / dataChunk.deceased
+				dataChunk.p_rec = srcData.pop / dataChunk.recovered
+				dataChunk.a_cases = srcData.area / dataChunk.cases
+				dataChunk.a_dec = srcData.area / dataChunk.deceased
+				dataChunk.a_rec = srcData.area / dataChunk.recovered
+			}
+			return srcData
+		}
+
+		function dataTransp(extData) { // transpose data for use in graphs
 			var gdata = []
-			gdata = []
-			gdata.push({})
-			gdata.push({})
-			gdata.push({})
+			for (i = 0; i < 9; i++) {
+				gdata.push({pointBackgroundColor:'rgba(0,0,0,0)', yAxisID:'y-axis-2', type:'abs', backgroundColor:"#00000020"})
+			}
 			gdata[0].label = "Cases"
 			gdata[1].label = "Deceased"
 			gdata[2].label = "Recovered"
+			gdata[3].label = "Cases to population"
+			gdata[4].label = "Deceased to population"
+			gdata[5].label = "Recovered to population"
+			gdata[6].label = "Cases to area"
+			gdata[7].label = "Deceased to area"
+			gdata[8].label = "Recovered to area"
+
+			gdata[3].type = gdata[4].type = gdata[5].type = "cap"
+			gdata[6].type = gdata[7].type = gdata[8].type = "area"
+
+			gdata[1].backgroundColor = gdata[4].backgroundColor = gdata[7].backgroundColor = "#000000dd"
+			gdata[2].backgroundColor = gdata[5].backgroundColor = gdata[8].backgroundColor = "#28b766"
+
+			gdata[0].yAxisID = gdata[3].yAxisID = gdata[6].yAxisID = "y-axis-1"
+
 			let cases = gdata[0].data = []
 			let deceased = gdata[1].data = []
 			let recovered = gdata[2].data = []
-
-			for (let dataChunk of Object.keys(srcData)) {
-				let c = {}
-				let d = {}
-				let r = {}
-				c.x = new Date(dataChunk)
-				d.x = c.x
-				r.x = c.x
-				c.y = srcData[dataChunk].cases
-				d.y = srcData[dataChunk].deceased
-				r.y = srcData[dataChunk].recovered
+			let p_cases = gdata[3].data = []
+			let p_dec = gdata[4].data = []
+			let p_rec = gdata[5].data = []
+			let a_cases = gdata[6].data = []
+			let a_dec = gdata[7].data = []
+			let a_rec = gdata[8].data = []
+					
+			for (let dataPoint of Object.keys(extData.data)) {
+				let c = {},d = {},r = {}, p_c = {}, p_d = {},  p_r = {}, a_c = {}, a_d = {}, a_r = {}
+				c.x = d.x = r.x = p_c.x = p_d.x = p_r.x = a_c.x = a_d.x = a_r.x = new Date(dataPoint)
+				c.y = extData.data[dataPoint].cases
+				d.y = extData.data[dataPoint].deceased
+				r.y = extData.data[dataPoint].recovered
+				p_c.y = extData.data[dataPoint].p_cases
+				p_d.y = extData.data[dataPoint].p_dec
+				p_r.y = extData.data[dataPoint].p_rec
+				a_c.y = extData.data[dataPoint].a_cases
+				a_d.y = extData.data[dataPoint].a_dec
+				a_r.y = extData.data[dataPoint].a_rec
 				cases.push(c)
 				deceased.push(d)
 				recovered.push(r)
+				p_cases.push(p_c)
+				p_dec.push(p_d)
+				p_rec.push(p_r)
+				a_cases.push(a_c)
+				a_dec.push(a_d)
+				a_rec.push(a_r)
 			}
 			return gdata
 		}
-		var srcData = {"area":9147593,"pop":329064917,"data":{"Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)":{"when":1584379616861,"cases":3836,"deceased":70,"recovered":73},"Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)":{"when":1584390062443,"cases":4314,"deceased":75,"recovered":73},"Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)":{"when":1584396188113,"cases":4547,"deceased":85,"recovered":74},"Tue Mar 17 2020 07:04:04 GMT+0100 (GMT+01:00)":{"when":1584425044991,"cases":4727,"deceased":93,"recovered":74},"Tue Mar 17 2020 08:16:06 GMT+0100 (GMT+01:00)":{"when":1584429366923,"cases":4727,"deceased":93,"recovered":74},"Tue Mar 17 2020 08:26:26 GMT+0100 (GMT+01:00)":{"when":1584429987241,"cases":4727,"deceased":93,"recovered":74},"Tue Mar 17 2020 08:59:01 GMT+0100 (GMT+01:00)":{"when":1584431958442,"cases":4733,"deceased":93,"recovered":74},"Tue Mar 17 2020 12:46:36 GMT+0100 (GMT+01:00)":{"when":1584445606034,"cases":4743,"deceased":93,"recovered":74},"Tue Mar 17 2020 13:58:14 GMT+0100 (GMT+01:00)":{"when":1584449903305,"cases":4744,"deceased":93,"recovered":74},"Tue Mar 17 2020 15:14:11 GMT+0100 (GMT+01:00)":{"when":1584454460888,"cases":4748,"deceased":93,"recovered":74},"Tue Mar 17 2020 17:56:48 GMT+0100 (GMT+01:00)":{"when":1584464218126,"cases":5696,"deceased":97,"recovered":74},"Tue Mar 17 2020 20:47:44 GMT+0100 (GMT+01:00)":{"when":1584474473776,"cases":5915,"deceased":99,"recovered":74},"Tue Mar 17 2020 22:29:19 GMT+0100 (GMT+01:00)":{"when":1584480569150,"cases":6159,"deceased":102,"recovered":74},"Wed Mar 18 2020 06:29:08 GMT+0100 (GMT+01:00)":{"when":1584509358794,"cases":6515,"deceased":115,"recovered":106},"Wed Mar 18 2020 11:10:56 GMT+0100 (GMT+01:00)":{"when":1584526256736,"cases":6524,"deceased":116,"recovered":106},"Wed Mar 18 2020 13:44:19 GMT+0100 (GMT+01:00)":{"when":1584535459649,"cases":6524,"deceased":116,"recovered":106},"Wed Mar 18 2020 15:50:14 GMT+0100 (GMT+01:00)":{"when":1584543014477,"cases":7339,"deceased":116,"recovered":106}}}
+
+		function trimDatasets(transpData, dataType) { // selects wanted data for specific graph
+			let datasets = [] // needs to be introduced, since deleting unwanted children from parent leaves them "undefined", note really deleted
+			for (let dataset of Object.keys(transpData)) {
+				if (transpData[dataset].type == dataType) {
+					delete transpData[dataset].type
+					datasets.push(transpData[dataset])
+				}
+			}
+			return datasets
+		}
+
+		function setYmax(datasets){
+			config.options.scales.yAxes[0].ticks.suggestedMax = datasets[0].data[datasets[0].data.length-1].y * 1.1
+			if (datasets[1].data[datasets[1].data.length-1].y > datasets[2].data[datasets[2].data.length-1].y){
+				config.options.scales.yAxes[1].ticks.suggestedMax = datasets[1].data[datasets[1].data.length-1].y * 1.2 + 1
+			} else {
+				config.options.scales.yAxes[1].ticks.suggestedMax = datasets[2].data[datasets[2].data.length-1].y * 1.2 + 1	
+			}
+		}
+
+		function reGraph(countryShortname, dataType, srcData) {
+			if (!srcData) {
+				$.getJSON('https://corona.virusmap.cz/x/' + countryShortname + '.json', function (data) {
+					sourceData = data
+					config.data.datasets = trimDatasets(dataTransp(extendData(sourceData)), dataType)
+					setYmax(config.data.datasets)
+					var ctx = document.getElementById("canvas").getContext("2d");
+					window.myLine = new Chart(ctx, config);
+				});
+			} else {
+				config.data.datasets = trimDatasets(dataTransp(extendData(sourceData)), dataType)
+				setYmax(config.data.datasets)
+				var ctx = document.getElementById("canvas").getContext("2d");
+				window.myLine = new Chart(ctx, config);
+			}
+		}
+
+		function initGraph() {
+			$.getJSON("https://corona.virusmap.cz/x/_countrylist.json", function (countrylist) {
+				cDropdown.empty();
+				$.each(countrylist, function (key, entry) {
+					cDropdown.append($('<option></option>').attr('value', entry).text(key.replace("undefined", "no data")));
+					cDropdown.prop('selectedIndex', 50);
+				})
+
+				sortDropdown($('select#countryDropdown option'))
+				reGraph($('select#countryDropdown').children("option:selected").val(), $('select#dataDropdown').children("option:selected").val())
+			})
+		}
+
+		function sortDropdown(options) {
+			var arr = options.map(function (_, o) {
+				return {
+					t: $(o).text(),
+					v: o.value
+				};
+			}).get();
+			arr.sort(function (o1, o2) {
+				return o1.t > o2.t ? 1 : o1.t < o2.t ? -1 : 0;
+			});
+			options.each(function (i, o) {
+				o.value = arr[i].v;
+				$(o).text(arr[i].t);
+			});
+		}
+
+		var sourceData // all country data from source
 		var timeFormat = 'DD/MM/YYYY';
 		var config = {
 			type: 'line',
 			data: {
 				datasets: [{
 					label: "Cases",
-					data: [{x: new Date("Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)"),y: 3836 }, {x: new Date("Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)"),y: 4314}, {x: new Date("Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)"), y: 4547}]},{label: "Cases",data: [{x: new Date("Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)"),y: 10}, {x: new Date("Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)"),y: 20 }, {x: new Date("Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)"),y: 15}]}]
+					data: [{ x: new Date("Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)"), y: 3836 }, { x: new Date("Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)"), y: 4314 }, { x: new Date("Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)"), y: 4547 }]
+				}, { label: "Cases", data: [{ x: new Date("Mon Mar 16 2020 18:26:56 GMT+0100 (GMT+01:00)"), y: 10 }, { x: new Date("Mon Mar 16 2020 21:21:02 GMT+0100 (GMT+01:00)"), y: 20 }, { x: new Date("Mon Mar 16 2020 23:03:07 GMT+0100 (GMT+01:00)"), y: 15 }] }]
 			},
 			options: {
-				responsive: true,
-				title: {
-					//display: true,
-					text: "COVID-19"
-				},
-				scales: {
-					xAxes: [{
-						type: "time",
-						time: {
-							format: timeFormat,
-							tooltipFormat: 'll'
-						},
-						scaleLabel: {
+					responsive: true,
+					hoverMode: 'index',
+					stacked: false,
+					title: {
+						display: true,
+						text: 'Chart.js Line Chart - Multi Axis'
+					},
+					scales: {					
+						xAxes: [{
+							type: "time",
+							time: {
+								format: timeFormat,
+								tooltipFormat: 'll'
+							},
+							scaleLabel: {
+								display: true,
+								labelString: 'Date'
+							}
+						}],
+						yAxes: [{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
 							display: true,
-							labelString: 'Date'
-						}
-					}],
-					yAxes: [{
-						scaleLabel: {
+							position: 'left',
+							id: 'y-axis-1',
+							ticks: {				
+								beginAtZero: true
+							}							
+						}, {
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
 							display: true,
-							labelString: 'value'
-						}
-					}]
+							position: 'right',
+							id: 'y-axis-2',
+							ticks: {								
+								beginAtZero: true
+							},
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						}],
+					}
 				}
-			}
 		};
-        var dropdown = $('#country-dropdown');
-        dropdown.empty();
-        dropdown.append('<option selected="true" disabled>Choose country</option>');
-        dropdown.prop('selectedIndex', 0);
-		window.onload = function () {
+		var cDropdown = $('#countryDropdown');
+		//dropdown.append('<option selected="true" disabled>Choose country</option>');
 
-            $.getJSON("https://corona.virusmap.cz/x/_countrylist.json", function(countrylist) {
-            $.each(countrylist, function (key, entry) {
-                console.log(key, entry)
-                dropdown.append($('<option></option>').attr('value', entry).text(key));
-            })
-            });
+		$('select#dataDropdown').change(function () {
+			reGraph($('select#countryDropdown').children("option:selected").val(), $('select#dataDropdown').children("option:selected").val(), sourceData)
+		});
 
-			$.getJSON("https://corona.virusmap.cz/x/united_states.json", function(srcData) {
-				var datasets = data2graph(srcData.data)
-			config.data.datasets = datasets
-			var ctx = document.getElementById("canvas").getContext("2d");
-			window.myLine = new Chart(ctx, config);
-			});
-		};
+		$('select#countryDropdown').change(function () {
+			reGraph($('select#countryDropdown').children("option:selected").val(), $('select#dataDropdown').children("option:selected").val())
+		});
+
+		window.onload = function () {initGraph()}
+
+
 	</script>
 </body>
 </html>
