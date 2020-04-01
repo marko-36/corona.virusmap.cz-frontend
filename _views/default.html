@@ -39,24 +39,25 @@
     <meta property="og:description" content="">
 	<meta name="description" content="Graphs, stats, raw data for 2019-2020 COVID-19 disease. BETA">
 
-	<link href="https://fonts.googleapis.com/css2?family=Oswald&family=Raleway:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@500;900&display=swap" rel="stylesheet">
 	<style>
 		/*-- http://meyerweb.com/eric/tools/css/reset/    v2.0 | 20110126   License: none (public domain)--*/
 		a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;/*font:inherit;*/vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
 		*{position:relative;box-sizing:border-box;background-repeat:no-repeat;outline:none}*:focus{outline:none}
-		body{z-index:2;font-family:'Raleway',sans-serif;color:#333;line-height:1.625rem;font-size:.775rem;background-color:#fff}
+		body{z-index:2;font-family:'Roboto',sans-serif;color:#000;line-height:1.325rem;font-size:.875rem;background-color:#fff}
 		header{display:block;position:fixed;z-index:70;top:0;height:2.5rem;width:100%;background-color:#ddd}
 		nav{display:block;position:fixed;z-index:70;top:2.5rem !important;width:100%;font-size:1.25rem;background:#000}
 		._dn>*,._dt>*,header>*,footer>*,#nav_user,#nav_main{position:relative;margin:0 auto 0 -32.5rem;width:65rem;left:50%;padding:0 .5rem 2rem}
 		main{display:block;position:relative;padding-top:8rem}
 		main>div:nth-child(2n+1){background-color:#eee}
 		
-		h1,.h1,h2,.h2,h3,.h3,h4,.h4,header,nav,select,a[id^="lbtn_"],.lbtn{font-weight:normal;color: #000;font-size:1rem;font-family:'Raleway',sans-serif}
+		h1,.h1,h2,.h2,h3,.h3,h4,.h4,header,nav,select,a[id^="lbtn_"],.lbtn{font-weight:normal;color: #000;font-size:.875rem;font-family:'Roboto',sans-serif}
 		h1,.h1,h2,.h2,h3,.h3,h4,.h4,nav{font-family: 'Oswald', sans-serif}	
-		h1,.h1{padding: 1.25rem 0 0 5rem;font-size: 2rem}
-		h2,.h2{padding:2rem 0 .25rem;font-size:2rem;width:auto !important}
-		h3,.h3,h4,cite{padding-top:1rem;font-size:1.375rem;color:#888}
+		h1,.h1{padding:1.25rem 0 0 5rem;font-size:2rem}
+		h2,.h2{padding:2rem 0 .25rem;font-size:1.75rem;width:auto !important}
+		h3,.h3,h4,cite{padding-top:1rem;font-size:1.275rem;color:#888}
 		h4,.h4{font-size:1.25rem;padding:1rem 0 0}
+		span{font-weight:900}
 		
 		nav{display:block;position:fixed;z-index:70;top:2.5rem !important;width:100%;font-size:1.25rem;background:#326}
 		nav a,nav b{display:block;color:#fff;font-weight:normal;text-decoration:none}
@@ -65,9 +66,15 @@
 		#nav_user li:nth-of-type(1){float:left;width:4.5rem;vertical-align:bottom;bottom:0;position:relative;height:4.5rem}/*width nastavit podle šířky loga*/
 		#nav_user a{filter: invert(100%); background-image: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 210.7 210.7%22%3E%3Cpath d%3D%22M189 83c-10 0-18 6-21 15h-9c-1-10-5-18-10-25l6-6a22 22 0 0031-21 22 22 0 00-22-22c-6 0-11 3-15 7-7 7-9 17-5 25l-6 6c-7-5-16-9-25-10v-9a22 22 0 10-15 0v9c-10 1-18 5-25 10l-7-6a22 22 0 10-10 11l6 6c-5 7-9 15-10 25h-9a22 22 0 10-21 29c10 0 18-6 21-14h9c1 9 5 18 10 25l-6 6a22 22 0 00-32 20 22 22 0 0022 22c6 0 12-2 16-6 7-7 8-17 4-25l7-6c7 5 15 9 25 10v9a22 22 0 007 43 22 22 0 0022-22c0-10-6-18-14-21v-9c9-1 18-5 25-10l6 6a22 22 0 1011-11l-6-6c5-7 9-16 10-25h9c3 8 11 14 21 14a22 22 0 000-44zm-56 50c-7 7-17 12-27 12h-1c-22-1-39-18-39-39v-1c0-21 18-39 39-39h1c10 0 20 4 27 11v1c7 7 11 16 12 27v1c-1 10-5 20-12 27zm26-92a7 7 0 0110 0 7 7 0 010 11 7 7 0 01-10 0c-3-3-3-8 0-11zm-54-26a7 7 0 110 14 7 7 0 010-14zM41 52a7 7 0 1111-11 7 7 0 01-11 11zm-19 60a7 7 0 110-14 7 7 0 010 14zm30 57a7 7 0 01-11 0 7 7 0 010-10 7 7 0 0111 0c2 3 2 7 0 10zm58 25l-5 2v7-7a7 7 0 115-2zm59-35a7 7 0 010 10 7 7 0 01-10 0 7 7 0 0110-10zm20-47v8-8a7 7 0 110-14 7 7 0 010 14z%22%2F%3E%3Ccircle cx%3D%22105.3%22 cy%3D%2293%22 r%3D%228%22%2F%3E%3Ccircle cx%3D%2293.4%22 cy%3D%22113.6%22 r%3D%228%22%2F%3E%3Ccircle cx%3D%22117.2%22 cy%3D%22113.6%22 r%3D%228%22%2F%3E%3C%2Fsvg%3E')}	
 		#nav_user a{height: 100%;background-size: 3rem;position: relative;background-position:50%}
-		#nav_main{padding:0;height:2.5rem;font-size:1.5rem;text-align:right; visibility:hidden}	
+		#nav_main{padding:0;height:2.5rem;font-size:1.5rem;text-align:right; visibility:hidden}
 
-		footer{padding:1rem;font-size:1rem;background-color:#000;color: #ccc}
+		ul{padding-top: 1rem}
+		li{list-style-type:square;margin-left: 1rem}
+		li span{font-weight:bold;color:#000}
+
+
+		footer{padding:1rem;background-color:#000;color: #eee}
+		footer a,footer a:visited{color: #aaa; text-decoration: underline}
 
 		table{width:100%}
 		td,th{padding:.375rem .1rem .375rem .375rem;font-size:.75rem;text-align:left;font-weight:normal;color:#326;white-space:nowrap}
@@ -79,7 +86,7 @@
 		th:nth-child(n+10){background-color:#e6e6e6}
 		td:nth-child(n+6) {background-color: rgba(0, 0, 0, .03)}
 		td:nth-child(n+10) {background-color: rgba(0, 0, 0, .07)}
-		tbody tr:nth-child(n+2):hover,tbody tr:nth-child(1) td:nth-child(6):hover,tbody tr:nth-child(1) td:nth-child(10):hover,th:hover {background-color: rgba(0, 90, 255, .20);cursor: pointer}
+		tbody tr:nth-child(n+2):hover,tbody tr:nth-child(1) td:nth-child(6):hover,tbody tr:nth-child(1) td:nth-child(10):hover,th:hover {background-color:#b7c9ea;cursor: pointer}
 
 		.tablePop td:nth-child(n+7):nth-child(-n+9),
 		.tablePop th:nth-child(n+7):nth-child(-n+9){display:none}
@@ -87,6 +94,8 @@
 		.tableArea td:nth-child(n+11),
 		.tableArea th:nth-child(n+11){display:none}
 		.tableArea tr:nth-child(n+2) td:nth-child(n+10){color:transparent}
+		#latestTableCon {overflow-y:auto;height:50vh}
+		#latestTableCon thead th {position:sticky;top:0}		
 
 		#shPop {text-decoration:underline}
 		#shArea {text-decoration:underline}
@@ -95,21 +104,20 @@
 		.tablePop #shPop::before{content:'Show '}
 		.tableArea #shPop::before {content:'Show '}
 
-		ul{padding-top: 1rem}
-		li{list-style-type:square;margin-left: 1rem}
-		li span{font-weight:bold;color:#000}
-
 		div#map{padding:.5rem;background:rgb(230, 255, 142);color:#000}
+		div#graph{position:relative;height:600px;width:100%}		
 
 		@media (max-width: 1058px){
+			
+			body{z-index:2;font-family:'Roboto',sans-serif;color:#000;line-height:1.25rem;font-size:.875rem;background-color:#fff}
 			._dn>*,._dt>*,header>*,footer>*,#nav_user,#nav_main{margin:0;width:100vw;left:unset;padding:0 .5rem 2rem}
 
 			nav{font-size:.975rem}
 
-			h1,.h1,h2,.h2,h3,.h3,h4,.h4,header,nav,select,a[id^="lbtn_"],.lbtn{font-size: .975rem}
-			h1,.h1,h2,.h2{font-size:1.125rem}
+			h1,.h1,h2,.h2,h3,.h3,h4,.h4,header,nav,select,a[id^="lbtn_"],.lbtn{font-size:.875rem}
+			h1,.h1,h2,.h2{font-size:1.65rem}
 			h1,.h1{padding:.875rem 0 0 4rem}
-			h3,.h3,h4,cite{padding-top:1rem;font-size:1rem}
+			h3,.h3,h4,cite{padding-top:1rem;font-size:1.25rem}
 			h4,.h4{font-size:.975rem}
 			
 			footer{font-size:.775rem;background-color:#000;color:#ccc}
@@ -125,6 +133,11 @@
 			tr:nth-child(n+2) td:nth-child(n+6) {color:transparent}
 			#latestTableCon{overflow-y:auto;height:80vh}
 
+			#shPop::before {content:'Show '}
+			#shArea::before {content:'Show '}
+			.tablePop #shPop::before{content:'Hide '}
+			.tableArea #shPop::before {content:'Hide '}
+
 			.tablePop td:nth-child(n+7):nth-child(-n+9),
 			.tablePop th:nth-child(n+7):nth-child(-n+9){display:table-cell}
 			.tablePop tr:nth-child(n+2) td:nth-child(n+6):nth-child(-n+9){color:unset}
@@ -133,10 +146,12 @@
 			.tableArea th:nth-child(n+11){display:table-cell}
 
 			.tableArea tr:nth-child(n+2) td:nth-child(n+10){color:unset}
+			div#graph{height:50vw;width:95vw}
 		}
 
 		@media (max-width: 860px){
 			._dn>*,._dt>*,header>*,footer>*,#nav_user,#nav_main{margin:0;width:100vw;left:unset;padding:0 .5rem 2rem}
+			div#graph{height:80vw;width:95vw}			
 		}
 	</style>
 </head>
@@ -159,28 +174,27 @@
 				<div>
 					<div>
 						<h2>Global map</h2>
+						<p><br>
+							<span>Select a metric: </span>
+							<select id="mapTypeDDL">
+								<option value="cases">Cases (infections) total</option>
+								<option value="p_casespct">% of population infected</option>
+								<option value="dec">Total dead</option>
+								<option value="p_decpct">% of population dead</option>
+								<option value="inc" selected>New cases (infections) last day</option>							
+								<option value="p_incpct">% of population infected last day</option>								
+							</select>
+							<ul>
+							<li><span>Cases (infections) total:</span> Absolute number of COVID-19 positive individuals to date, regardless of death or recoveries</li>
+							<li><span>% of population infected:</span> Infected / Population x 100 </li>
+							<li><span>Total dead:</span>Absolute number of COVID-19 related deaths</li>
+							<li><span>% of population dead:</span> Dead / Population x 100</li>
+							<li><span>New cases (infections) last day:</span> Absolute number of COVID-19 positive individuals at last day</li>							
+							<li><span>% of population infected last day:</span> Percentage population infected last day</li>
+						</ul>
 						<br>
-
+						
 						<div id="regions_div"></div>
-						<select id="mapTypeDDL">
-							<option value="cases">Cases (infections) total</option>
-							<option value="p_casespct">% of population infected</option>
-							<option value="dec">Total dead</option>
-							<option value="p_decpct">% of population dead</option>
-							<option value="inc" selected>New cases (infections) last day</option>							
-							<option value="p_incpct">% of population infected last day</option>								
-						</select>
-
-						<div id="map"><b>2020-03-30 update: Coming real soon:</b>
-							<br</b> <ul>
-								<li>Improved mobile version</li>
-								<li>Sensible data descriptions and X, Y axes</li>
-								<li>Suggestions? Bugs? Much appreciated! <a
-										href="mailto:virusmapcz@gmail.com?subject=Suggestions? Bugs?">virusmapcz@gmail.com</a>
-								</li>
-								</ul>
-								<p></p>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -196,14 +210,8 @@
 				<div>
 					<h2>Top 10 by cases</h2>
 					<h3>Countries with most coronavirus infections (COVID-19) cases</h3>
-					<ul>
-						<li><span>Cases (infections) total:</span> Absolute number of COVID-19 positive individuals to
-							date, regardless of death or recoveries</li>
-						<li><span>% of population infected:</span> Infected / Population x 100 </li>
-						<li><span>Total dead:</span>Absolute number of COVID-19 related deaths</li>
-						<li><span>% of population dead:</span> Dead / Population x 100</li>
-					</ul>
 					<p><br>
+						<span>Select a metric: </span>
 						<select id="top10DDL">
 							<option value="cases">Cases (infections) total</option>
 							<option value="p_casespct" selected>% of population infected</option>
@@ -211,6 +219,13 @@
 							<option value="p_decpct">% of population dead</option>
 						</select>
 					</p>
+					<ul>
+						<li><span>Cases (infections) total:</span> Absolute number of COVID-19 positive individuals to date, regardless of death or recoveries</li>
+						<li><span>% of population infected:</span> Infected / Population x 100 </li>
+						<li><span>Total dead:</span>Absolute number of COVID-19 related deaths</li>
+						<li><span>% of population dead:</span> Dead / Population x 100</li>
+					</ul>
+					<br>
 					<div id="graph">
 						<canvas id="top10Graph"></canvas>
 					</div>
@@ -222,17 +237,18 @@
 				<div>
 					<h2>Rate of growth for the top 10 countries</h2>
 					<h3>Countries with most coronavirus infections (COVID-19) cases</h3>
-					<ul>
-						<li><span>New cases (infections) daily:</span> Absolute number of COVID-19 positive individuals
-							at for each day</li>
-						<li><span>% of population infected daily:</span> Percentage population infected each day</li>
-					</ul>
 					<p><br>
+						<span>Select a metric: </span>
 						<select id="inc10DDL">
 							<option value="inc" selected>New cases (infections) daily</option>
 							<option value="p_incpct">% of population infected daily</option>
 						</select>
-					</p>
+					</p>					
+					<ul>
+						<li><span>New cases (infections) daily:</span> Absolute number of COVID-19 positive individuals each day</li>
+						<li><span>% of population infected daily:</span> Percentage population infected each day</li>
+					</ul>
+					<br>
 					<div id="graph">
 						<canvas id="inc10Graph"></canvas>
 					</div>
@@ -249,6 +265,7 @@
 							<option value="wait">Please wait ...</option>
 						</select>
 					</p>
+					<br>
 					<div id="graph">
 						<canvas id="countryGraph"></canvas>
 					</div>
@@ -262,20 +279,20 @@
 						<h2>Latest coronavirus data</h2>
 						<h3>Sortable stats table</h3>
 						<ul>
-							<li><span>Click on column headers</span> to sort by columns</li>
-							<li><span>Click "Show/Hide</span>" in Population and Area Columns, under the header, to show
-								or hide additional data</li>
+							<li><span>Click on column headers to sort by columns</span></li>
+							<li><span>Click "Show/Hide" in Population and Area Columns, under the header, to show
+								or hide additional data</span></li>
 						</ul>
 						<ul>
 							<li><span>Cases:</span> Number of infections,</li>
 							<li><span>Deaths</span> aka dead.</li>
-							<li><span>24+:</span><br>Change since last update (usually 24 hours) - difference between
-								last two full days. E.g. The difference between Monday and Tuesday, shown on Wednesday.
+							<li><span>24+: </span>Change since last update (usually 24 hours) - difference between
+								last two full days.<br>E.g. The difference between Monday and Tuesday, shown on Wednesday.
 							</li>
-							<li><span>Population/Cases, Population/Deaths: </span><br>Population divided by number of
+							<li><span>Population/Cases, Population/Deaths: </span>Population divided by number of
 								coronavirus cases (infections) or deaths.<br>In other words "<i>Every [number]-th person
 									is infected by or deaths from coronavirus.</i>"</li>
-							<li><span>Area/Cases, Area/Deaths</span><br>Square kilometers divided by number of
+							<li><span>Area/Cases, Area/Deaths: </span>Square kilometers divided by number of
 								coronavirus cases (infections) or deaths.<br>In other words "<i>One person per [number]
 									square kilometers is infected by/deaths from coronavirus.</i>"</li>
 						</ul>
@@ -323,19 +340,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="_dn">
-				<div>
-					<div id="graph">
-						<canvas id="countryGraph"></canvas>
-					</div>
-				</div>
-			</div>
 		</div>
 	</main>
 	<footer>
-		<div>© 2020<br /></div>
-		<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
-				href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+		<div>
+			<ul>
+				<li>© 2020 <a href="https://netwell.digital/">netwell.digital</a></li>
+				<li><a href="mailto:virusmapcz@gmail.com?subject=Suggestions? Bugs?">virusmapcz@gmail.com</a></li>
+				<li>Built as <a href="https://jigsaw.w3.org/css-validator/check/referer">valid HTML+CSS3</a> using <a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a>, <a href="https://jquery.com/">jQuery</a>, <a href="https://developers.google.com/chart">Google Charts</a>, <a href="https://www.chartjs.org/">charts.js</a>, <a href="https://aws.amazon.com/ec2/">AWS EC2</a> + <a href="https://www.nginx.com/">NGINX</a>, and <a href="https://www.cloudflare.com/">Cloudflare</a></li>
+				<li>Icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a></li>
+				<li>Data sources: <a href="https://www.ecdc.europa.eu/en/novel-coronavirus-china">ECDC</a>, <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen">WHO</a>, <a href="https://www.worldometers.info/coronavirus/">worldometers</a></li>				
+			</ul>
+		</div>						
 	</footer>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
@@ -568,9 +584,7 @@
 		var mapData
 
 		var timeFormat = 'DD/MM/YYYY';
-		var color10 = ['#9a94bf', '#7dbfa9', '#426027', '#9e5f21', '#f7f3db', '#f0a3a2', '#f7ba53', '#e50203', '#03509d',
-			'#015ea6'
-		]
+		var color10 = ['#9a94bf', '#7dbfa9', '#426027', '#9e5f21', '#f7f3db', '#f0a3a2', '#f7ba53', '#e50203', '#03509d','#015ea6']
 		var configCountry = {
 
 			type: 'bar',
@@ -578,12 +592,18 @@
 				datasets: []
 			},
 			options: {
+				animation: {duration: 0},				
 				responsive: true,
+				maintainAspectRatio: false,
+				aspectRatio: 1,
 				hoverMode: 'index',
 				stacked: false,
-				title: {
-					display: true,
-					text: 'Country'
+				title: {display: false},
+				legend: {
+            		labels: {
+						fontFamily:'Roboto',
+						fontColor:'#000'
+					}
 				},
 				scales: {
 					xAxes: [{
@@ -595,6 +615,10 @@
 						scaleLabel: {
 							display: true,
 							labelString: 'Date'
+						},
+						ticks: {
+							fontFamily:'Roboto',
+							fontColor:'#000'	
 						}
 					}],
 					yAxes: [{
@@ -603,7 +627,9 @@
 						position: 'left',
 						id: 'y-axis-1',
 						ticks: {
-							beginAtZero: true
+							beginAtZero: true,
+							fontFamily:'Roboto',
+							fontColor:'#000'							
 						}
 					}, {
 						type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
@@ -611,7 +637,9 @@
 						position: 'right',
 						id: 'y-axis-2',
 						ticks: {
-							beginAtZero: true
+							beginAtZero: true,
+							fontFamily:'Roboto',
+							fontColor:'#000'							
 						},
 						gridLines: {
 							drawOnChartArea: false, // only want the grid lines for one axis to show up
@@ -626,12 +654,18 @@
 				datasets: []
 			},
 			options: {
+				animation: {duration: 0},				
 				responsive: true,
+				maintainAspectRatio: false,	
+				aspectRatio: 1,							
 				hoverMode: 'index',
 				stacked: false,
-				title: {
-					display: true,
-					text: 'Country'
+				title: {display: false},
+				legend: {
+            		labels: {
+						fontFamily:'Roboto',
+						fontColor:'#000'
+					}
 				},
 				scales: {
 					xAxes: [{
@@ -643,6 +677,10 @@
 						scaleLabel: {
 							display: true,
 							labelString: 'Date'
+						},
+						ticks: {
+							fontFamily:'Roboto',
+							fontColor:'#000'	
 						}
 					}],
 					yAxes: [{
@@ -651,7 +689,9 @@
 						position: 'right',
 						id: 'y-axis-2',
 						ticks: {
-							beginAtZero: true
+							beginAtZero: true,
+							fontFamily:'Roboto',
+							fontColor:'#000'							
 						},
 						gridLines: {
 							drawOnChartArea: false, // only want the grid lines for one axis to show up
@@ -666,12 +706,18 @@
 				datasets: []
 			},
 			options: {
+				animation: {duration: 0},
 				responsive: true,
+				maintainAspectRatio: false,
+				aspectRatio: 1,						
 				hoverMode: 'index',
 				stacked: false,
-				title: {
-					display: true,
-					text: 'Country'
+				title: {display: false},
+				legend: {
+            		labels: {
+						fontFamily:'Roboto',
+						fontColor:'#000'
+					}
 				},
 				scales: {
 					xAxes: [{
@@ -683,6 +729,10 @@
 						scaleLabel: {
 							display: true,
 							labelString: 'Date'
+						},
+						ticks: {
+							fontFamily:'Roboto',
+							fontColor:'#000'	
 						}
 					}],
 					yAxes: [{
@@ -691,7 +741,9 @@
 						position: 'right',
 						id: 'y-axis-2',
 						ticks: {
-							beginAtZero: true
+							beginAtZero: true,
+							fontFamily:'Roboto',
+							fontColor:'#000'							
 						},
 						gridLines: {
 							drawOnChartArea: false, // only want the grid lines for one axis to show up
