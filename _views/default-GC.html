@@ -101,6 +101,8 @@
 		.tablePop #shPop::before{content:'Show '}
 		.tableArea #shPop::before {content:'Show '}
 
+		/*div#regions_div{min-height:639px;min-width:1024px;background:#ccc}
+		div#map{padding:.5rem;background:rgb(230, 255, 142);color:#000}*/
 		div.graph{position:relative;height:600px;width:100%}		
 
 		@media (max-width: 1058px){
@@ -265,6 +267,9 @@
 					<br>
 					<div class="graph">
 						<canvas id="countryGraph"></canvas>
+					</div>
+					<div id="graph2">
+						<div id="chart_div"></div>
 					</div>
 				</div>
 			</div>
@@ -478,7 +483,6 @@
 			chart.draw(data, options);
       }
 
-
 		function graphTop10(dataTop10, dataType) {
 			let i = 0
 			configTop10.data.datasets = []
@@ -552,6 +556,85 @@
 			window.myLine = new Chart(document.getElementById("countryGraph").getContext("2d"), configCountry)
 		}
 
+		function graphCountrG(countryShortname, _countryData) {
+		if (!_countryData) {
+			$.getJSON('https://corona.virusmap.cz/x/' + countryShortname + '.json', function (_countryData) {
+				countryData = extendDataFile(_countryData)
+				exegraphCountrG(countryData[countryShortname].data)
+			})
+		} else {
+			exegraphCountrG(countryData[countryShortname].data)
+		}
+	}
+
+			function exegraphCountrG(data) {
+				let dataArray = [];				
+				let cases, rec, dec, yMax = 0
+				for (let dataPoint of Object.keys(data)) {
+					if (data[dataPoint].cases > 100) {
+						if (data[dataPoint].dec == undefined) {data[dataPoint].dec = 0}
+						if (data[dataPoint].rec == undefined) {data[dataPoint].rec = 0}
+						if ((cases = Number(data[dataPoint].cases)) == undefined) {}
+						rec = Number(data[dataPoint].rec)
+						dec	= Number(data[dataPoint].dec)
+						if (rec > yMax) {yMax = rec}
+						dataArray.push([new Date(dataPoint), cases, rec, dec])
+					}
+				}
+
+				// https://developers.google.com/chart/interactive/docs/gallery/columnchart#dual-y-charts
+				google.charts.load('current', { 'packages': ['corechart', 'bar'] });
+				google.charts.setOnLoadCallback(drawStuff);
+
+				function drawStuff() {
+					var chartDiv = document.getElementById('chart_div');
+					var gdata = new google.visualization.DataTable();
+					gdata.addColumn('date', 'Date');
+    				gdata.addColumn('number', 'Cases');
+					gdata.addColumn('number', 'Recovered');
+					gdata.addColumn('number', 'Dead');
+					gdata.addRows(dataArray)
+
+					var materialOptions = {
+						width: 900,
+						height: 600,
+						chart: {
+							//title: 'Nearby galaxies',
+							//subtitle: 'distance on the left, brightness on the right'
+						},
+						legend:{
+							position: 'top',
+							alignment: 'center'
+						},
+						series: {
+							0: {targetAxisIndex:1, color:'#f77000'}, // Cases
+							1: {targetAxisIndex:0, color:'#9fd702'}, // Recovered
+							2: {targetAxisIndex:0, color:'#000000'} // Dead			
+						},
+						vAxes: {
+							0: {
+								title: 'Dead / Recovered',
+								viewWindow:{max:yMax*1.5},							
+							},	
+							1: {
+								title: 'Cases',
+								//viewWindow:{max:320}								
+							}
+						}
+					};
+
+					function drawMaterialChart() {
+						var materialChart = new google.charts.Bar(chartDiv);
+						materialChart.draw(gdata, google.charts.Bar.convertOptions(materialOptions));
+					}
+
+					drawMaterialChart();
+				};
+
+
+			}
+
+	
 		function tableAll(dataLatest) {
 			for (let country of Object.keys(dataLatest)) {
 				// let d = extendDataPoint(dataLatest[country].data[Object.keys(dataLatest[country].data)[0]], dataLatest[country].pop, dataLatest[country].area)
@@ -763,6 +846,7 @@
 
 		$('select#countryDropdown').change(function () {
 			graphCountry($('select#countryDropdown').children("option:selected").val())
+			graphCountrG($('select#countryDropdown').children("option:selected").val())			
 		});
 
 		$('select#mapTypeDDL').change(function () {
@@ -775,6 +859,8 @@
 				populateCountryDDL(countryDDL);
 				sortDropdown($('select#countryDropdown option'))
 				graphCountry($('select#countryDropdown').children("option:selected").val())
+				graphCountrG($('select#countryDropdown').children("option:selected").val())				
+
 			})
 			$.getJSON("https://corona.virusmap.cz/x/_dataTop10.json", function (_dataTop10) {
 				dataTop10 = extendDataFile(_dataTop10)
